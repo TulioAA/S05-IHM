@@ -51,4 +51,5 @@ function reservarArmario() {
 
   console.log(usuario);
   console.log(armarios);
+
 }
