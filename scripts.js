@@ -19,28 +19,36 @@ function reservarArmario() {
   // obter tipo de armário selecionado pelo usuário no html.
   let tipoSelecionado = document.getElementById("tipoArmario").value;
   
-  // na lista, filtrar apenas os armários que estão disponíveis e que são acessiveis ao usuário.
+  // na lista, filtrar apenas os armários que estão disponíveis e que são acessíveis ao usuário.
   let armariosDisponiveis = armarios.filter(a => a.formato === tipoSelecionado && a.status === true && usuario.acessibilidade === a.acessivel);
   
   // caso não exista armário disponível, retorna para o usuário mensagem.
   if (armariosDisponiveis.length === 0) {
-    document.getElementById("resultado").innerText = `Olá, ${usuario.nome}! Nenhum armário disponível para o tipo selecionado.`;
+    document.getElementById("resultado").innerText = Olá, ${usuario.nome}! Nenhum armário disponível para o tipo selecionado.;
     return;
   }
   
-  // Caso exista armário(s) disponíveil, seguimos sorteando uma opção. 
+  // Caso exista armário(s) disponível, seguimos sorteando uma opção. 
   let armarioSorteado = armariosDisponiveis[Math.floor(Math.random() * armariosDisponiveis.length)];
   
-  // Depois localizamos o armário emprestado na lista de armarios e mudamos o status do armário.
-  let armarioEmprestado = armarios.find(armario => armario.id === armarioSorteado.id).status = false;
+  // Depois localizamos o armário emprestado na lista de armários e mudamos o status do armário.
+  let armarioEmprestado = armarios.find(armario => armario.id === armarioSorteado.id);
+  armarioEmprestado.status = false;
   
-  // Finalmente, mudamos a pendencia do usuário para verdadeira.
+  // Obter a data e hora do momento da reserva
+  let dataReserva = new Date();
+  armarioEmprestado.dataReserva = dataReserva;
+  
+  // Calcular a data e hora para entrega das chaves (prazo de 24h)
+  let dataEntrega = new Date(dataReserva.getTime() + 24 * 60 * 60 * 1000);
+  armarioEmprestado.dataEntrega = dataEntrega;
+  
+  // Finalmente, mudamos a pendência do usuário para verdadeira.
   usuario.pendencia = true;
   
-  // Impmimimos uma mensagem de reserva para o usuário.
-  document.getElementById("resultado").innerText = `Olá, ${usuario.nome}! O armário ${armarioSorteado.id} foi reservado com sucesso!`;
+  // Imprimimos uma mensagem de reserva para o usuário.
+  document.getElementById("resultado").innerText = Olá, ${usuario.nome}! O armário ${armarioSorteado.id} foi reservado com sucesso! Você deve devolver as chaves até ${dataEntrega.toLocaleString()}.;
 
   console.log(usuario);
   console.log(armarios);
-
 }
