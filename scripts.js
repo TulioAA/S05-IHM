@@ -24,7 +24,7 @@ function reservarArmario() {
   
   // caso não exista armário disponível, retorna para o usuário mensagem.
   if (armariosDisponiveis.length === 0) {
-    document.getElementById("resultado").innerText = Olá, ${usuario.nome}! Nenhum armário disponível para o tipo selecionado.;
+    document.getElementById("resultado").innerText = `Olá, ${usuario.nome}! Nenhum armário disponível para o tipo selecionado.`;
     return;
   }
   
@@ -47,7 +47,7 @@ function reservarArmario() {
   usuario.pendencia = true;
   
   // Imprimimos uma mensagem de reserva para o usuário.
-  document.getElementById("resultado").innerText = Olá, ${usuario.nome}! O armário ${armarioSorteado.id} foi reservado com sucesso! Você deve devolver as chaves até ${dataEntrega.toLocaleString()}.;
+  document.getElementById("resultado").innerText = `Olá, ${usuario.nome}! O armário ${armarioSorteado.id} foi reservado com sucesso!`;
 
   console.log(usuario);
   console.log(armarios);
