@@ -4,7 +4,6 @@
     <title> título da página </title>
     <link rel="stylesheet" href="index.css">
     </head>
-
     <body>
         <div id="menu_aba">
             <div id="menu_bot" onclick="closeMenu(), temaInatel()">Tema Inatel</div>
@@ -34,24 +33,10 @@
                 <div class="disciplina">
                 </div>
             </section>
-
-            <img src="${event.image}" alt="${event.title}">
-            <div class="info">
-                <h3>${event.title}</h3>
-                <p>${event.description}</p>
-                <p><span class="material-symbols-outlined icon">event</span> ${event.date} às ${event.time} <span class="material-symbols-outlined icon">pin_drop</span> ${event.location}</p>
-                <script src="scripts.js">
-                </script>
-            </div>
-
             <div class="carousel-container">
-                <div class="carousel">
-                    <!-- Os cards deverão ser inseridos dinamicamente via JS -->
-                </div>
-                <button id="prevBtn">❮</button>
-                <button id="nextBtn">❯</button>
+                <div id="eventos-container" class="p-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                </div>         
             </div>  
-            
             <section class="noticias">
             </section>
         </main>
