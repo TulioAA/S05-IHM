@@ -59,7 +59,6 @@ function enviarFormulario(botao) {
     div.innerHTML = '<strong>Inscrição realizada!</strong>';
     salvarInscricao(tituloVaga);
 }
-
 function salvarInscricao(titulo) {
     let inscricoes = JSON.parse(localStorage.getItem("inscricoes")) || [];
     if (!inscricoes.includes(titulo)) {
